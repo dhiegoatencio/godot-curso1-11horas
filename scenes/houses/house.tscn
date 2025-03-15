@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=4 uid="uid://brrn8tncr1mgg"]
+
+[ext_resource type="Script" uid="uid://dyblh05on36uw" path="res://scenes/houses/house.gd" id="1_unb61"]
+[ext_resource type="PackedScene" uid="uid://dlqjudsgi4urv" path="res://scenes/objects/simple_light.tscn" id="2_b1fwh"]
+[ext_resource type="TileSet" uid="uid://dhe2ateu3w1nx" path="res://scenes/levels/floor.tres" id="2_llgn4"]
+[ext_resource type="TileSet" uid="uid://cbgsr1v1uwbx3" path="res://scenes/levels/outer_walls.tres" id="3_kvjtp"]
+[ext_resource type="PackedScene" uid="uid://7nx4vhij37t1" path="res://scenes/objects/wall_lamp.tscn" id="3_nwqdy"]
+[ext_resource type="TileSet" uid="uid://cadli68tbhytc" path="res://scenes/levels/inner_walls.tres" id="4_042jo"]
+[ext_resource type="PackedScene" uid="uid://cyqh6kayx8qmy" path="res://scenes/objects/light_fan_animation.tscn" id="4_wmlim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7cyq"]
+size = Vector2(3120, 1921)
+
+[node name="House" type="Area2D"]
+collision_layer = 16
+script = ExtResource("1_unb61")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(978, 383.5)
+shape = SubResource("RectangleShape2D_i7cyq")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAACAP//AAABAAEAAAADAAAAAAABAAEAAAADAP//AAABAAEAAAADAAEAAAABAAEAAAACAAEAAAABAAEAAAABAAEAAAABAAEAAAAAAAEAAAABAAEAAAD//wEAAAABAAEAAAD//wAAAAABAAEAAAD/////AAABAAEAAAAEAP//AAABAAEAAAAEAAAAAAABAAEAAAAEAAEAAAABAAEAAAAFAP//AAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAD//wIAAAABAAEAAAAAAAIAAAABAAEAAAABAAIAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAAEAAIAAAABAAEAAAAFAAIAAAABAAEAAAD+/wIAAAAAAAEAAAD+/wEAAAAAAAEAAAD+/wAAAAAAAAEAAAD+////AAAAAAEAAAAGAAIAAAACAAEAAAAGAAEAAAACAAEAAAAGAAAAAAACAAEAAAAGAP//AAACAAEAAAD//wMAAAABAAIAAAAAAAMAAAABAAIAAAABAAMAAAABAAIAAAACAAMAAAABAAIAAAADAAMAAAABAAIAAAAEAAMAAAACAAQAAAAFAAMAAAACAAQAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAADAP7/AAABAAAAAAAEAP7/AAABAAAAAAAFAP7/AAABAAAAAAAGAP7/AAACAAAAAAAGAAMAAAACAAIAAAD+/wMAAAAAAAIAAAD+//7/AAAAAAAAAAA=")
+tile_set = ExtResource("2_llgn4")
+
+[node name="OuterWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD+/wEAAQAFAAEAAAD+/wAAAQAFAAEAAAD+////AQAFAAEAAAD///7/AQAEAAAAAAAAAP7/AQAEAAAAAAABAP7/AQAEAAAAAAACAP7/AQAEAAAAAAADAP7/AQAEAAAAAAD+//7/AQADAAAAAAAEAP7/AQAEAAAAAAAFAP7/AQAEAAAAAAD//wMAAQAEAAAAAAAAAAMAAQAEAAAAAAABAAMAAQAEAAAAAAACAAMAAQAEAAAAAAADAAMAAQAEAAAAAAAGAAMAAQAFAAIAAAD+/wMAAQADAAIAAAD+/wIAAQADAAEAAAAGAP7/AQAFAAAAAAAGAAIAAQAFAAEAAAAGAAEAAQAFAAEAAAAGAAAAAQAFAAEAAAAGAP//AQAFAAEAAAAEAAMAAQAGAAMAAAAFAAMAAQAGAAQAAAA=")
+tile_set = ExtResource("3_kvjtp")
+
+[node name="InnerWalls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAEAAIAAAABAAgAAAAEAAEAAAABAAYAAAAEAAAAAAABAAYAAAAEAP//AAABAAcAAAADAP//AAAAAAYAAAACAP//AAAAAAYAAAABAP//AAAAAAcAAAD/////AAAEAAcAAAAFAAEAAAAEAAcAAAAFAAIAAAAEAAcAAAAFAP//AAAEAAcAAAAFAAAAAAAEAAcAAAAGAP//AAAGAAcAAAAGAAAAAAAGAAcAAAAGAAEAAAAGAAcAAAAGAAIAAAAGAAcAAAAAAP//AAABAAgAAAAAAAAAAAABAAcAAAAAAAEAAAADAAYAAAABAAEAAAABAAcAAAABAAIAAAAAAAgAAAAAAAIAAAAFAAgAAAAAAP7/AAAFAAYAAAD//wAAAAAEAAcAAAD//wEAAAAAAAcAAAABAAAAAAAFAAgAAAD//wIAAAAFAAgAAAADAAIAAAAAAAcAAAADAAMAAAAFAAgAAAA=")
+tile_set = ExtResource("4_042jo")
+
+[node name="SimpleLight" parent="." instance=ExtResource("2_b1fwh")]
+position = Vector2(-504, 23)
+rotation = -1.57882
+
+[node name="SimpleLight2" parent="." instance=ExtResource("2_b1fwh")]
+position = Vector2(1984, -505)
+
+[node name="SimpleLight3" parent="." instance=ExtResource("2_b1fwh")]
+position = Vector2(912, 1275)
+rotation = 3.14159
+
+[node name="WallLamp" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(1782, 421)
+rotation = 1.5708
+
+[node name="WallLamp9" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(1401, 1133)
+rotation = 1.5708
+
+[node name="WallLamp3" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(2452, 778)
+rotation = -1.5708
+
+[node name="WallLamp4" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(2457, 388)
+rotation = -1.5708
+
+[node name="WallLamp5" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(2457, -10)
+rotation = -1.5708
+
+[node name="WallLamp6" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(166, 390)
+rotation = -1.5708
+
+[node name="WallLamp7" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(-1, 617)
+rotation = 3.14159
+
+[node name="WallLamp8" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(389, 621)
+rotation = 3.14159
+
+[node name="WallLamp2" parent="." instance=ExtResource("3_nwqdy")]
+position = Vector2(1053, -170)
+rotation = 3.14159
+
+[node name="LightFanAnimation" parent="." instance=ExtResource("4_wmlim")]
+position = Vector2(1134, 361)
+frame = 20
+frame_progress = 0.950484
+
+[node name="LightFanAnimation2" parent="." instance=ExtResource("4_wmlim")]
+position = Vector2(2025, 383)
+frame_progress = 0.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

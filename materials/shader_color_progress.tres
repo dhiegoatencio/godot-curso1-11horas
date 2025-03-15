@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://yr0rqrxpuoif"]
+
+[ext_resource type="Shader" uid="uid://bp8i6c5aiwcld" path="res://scenes/enemies/scout.gdshader" id="1_o2kjh"]
+
+[resource]
+shader = ExtResource("1_o2kjh")

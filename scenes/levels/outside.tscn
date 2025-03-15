@@ -1,0 +1,144 @@
+[gd_scene load_steps=19 format=4 uid="uid://dw2gwbdyq44po"]
+
+[ext_resource type="PackedScene" uid="uid://b33oca8u0eq87" path="res://scenes/levels/level.tscn" id="1_2s4ok"]
+[ext_resource type="Texture2D" uid="uid://bw4uo4frjy6aq" path="res://graphics/ground/stones.png" id="2_tn0yi"]
+[ext_resource type="PackedScene" uid="uid://b2xw2vlp7m38q" path="res://scenes/objects/gate.tscn" id="2_x73sx"]
+[ext_resource type="Script" uid="uid://18cjo3aydbn" path="res://scenes/levels/outside.gd" id="2_xorrk"]
+[ext_resource type="Texture2D" uid="uid://8orweqc6i8jm" path="res://graphics/tilesets/soil.png" id="3_xorrk"]
+[ext_resource type="Texture2D" uid="uid://y0jkdf4qi7vr" path="res://graphics/decals/dirt_patch.png" id="4_wq65m"]
+[ext_resource type="Texture2D" uid="uid://dx3k4quk2n0b0" path="res://graphics/decals/moss/moss_1.png" id="5_qvsb0"]
+[ext_resource type="Texture2D" uid="uid://dnr1dr0ccpyf" path="res://graphics/decals/moss/moss_5.png" id="6_xqqjy"]
+[ext_resource type="Texture2D" uid="uid://cn4l46jnagig8" path="res://graphics/tilesets/outside_walls.png" id="7_ex6t8"]
+[ext_resource type="PackedScene" uid="uid://brrn8tncr1mgg" path="res://scenes/houses/house.tscn" id="8_x30qc"]
+[ext_resource type="PackedScene" uid="uid://dwaigid80tphy" path="res://scenes/objects/steam_vent.tscn" id="9_uaeil"]
+[ext_resource type="PackedScene" uid="uid://ch6kbviijt7sl" path="res://scenes/items/item.tscn" id="12_wq65m"]
+[ext_resource type="PackedScene" uid="uid://iwabr45jtex7" path="res://scenes/objects/crate.tscn" id="13_qvsb0"]
+[ext_resource type="PackedScene" uid="uid://b6vblva7l6unj" path="res://scenes/enemies/scout.tscn" id="14_xqqjy"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bjulg"]
+resource_name = "soil"
+texture = ExtResource("3_xorrk")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gd7nx"]
+tile_size = Vector2i(390, 390)
+sources/2 = SubResource("TileSetAtlasSource_bjulg")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lnny"]
+resource_name = "walls"
+texture = ExtResource("7_ex6t8")
+texture_region_size = Vector2i(390, 390)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cnio0"]
+tile_size = Vector2i(390, 390)
+sources/0 = SubResource("TileSetAtlasSource_4lnny")
+
+[node name="Outside" instance=ExtResource("1_2s4ok")]
+script = ExtResource("2_xorrk")
+
+[node name="Gate" parent="." index="1" instance=ExtResource("2_x73sx")]
+position = Vector2(502, -569)
+
+[node name="Ground" parent="." index="2" groups=["Container"]]
+
+[node name="Soil" type="Sprite2D" parent="Ground" index="0"]
+z_index = -5
+texture_repeat = 2
+position = Vector2(663, 794)
+texture = ExtResource("2_tn0yi")
+region_enabled = true
+region_rect = Rect2(-5400, -3000, 16000, 10000)
+
+[node name="Decoration" type="Sprite2D" parent="Ground" index="1"]
+modulate = Color(0.996078, 0.701961, 0.501961, 0.898039)
+z_index = -4
+position = Vector2(77, 812)
+scale = Vector2(1.342, 1)
+texture = ExtResource("4_wq65m")
+
+[node name="TileMapLayerSoils" type="TileMapLayer" parent="Ground" index="2"]
+z_index = -5
+tile_map_data = PackedByteArray("AAADAAMAAgABAAEAAAADAAIAAgABAAAAAAAEAAIAAgABAAAAAAAFAAIAAgACAAAAAAAFAAMAAgACAAIAAAAEAAMAAgABAAEAAAADAAQAAgAAAAIAAAAEAAQAAgACAAIAAAD9/wIAAgABAAEAAAD9/wMAAgACAAIAAAD8/wIAAgAAAAEAAAD8/wMAAgAAAAIAAAAFAAEAAgAAAAIAAAAFAAAAAgAAAAEAAAAFAP//AgACAAEAAAD9////AgABAAAAAAD9/wAAAgABAAEAAAD9/wEAAgABAAEAAAD+/wEAAgACAAAAAAD8/wAAAgAAAAEAAAD8/wEAAgAAAAEAAAACAAMAAgAAAAIAAAACAAIAAgAAAAAAAAAGAAAAAgACAAAAAAAGAAEAAgACAAIAAAAFAP7/AgACAAAAAAD+/wIAAgACAAIAAAD8////AgAAAAAAAAD+/wAAAgACAAIAAAA=")
+tile_set = SubResource("TileSet_gd7nx")
+
+[node name="TileMapLayerWalls" type="TileMapLayer" parent="Ground" index="3"]
+z_index = -1
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAIAAAAAAAMAAAABAAEAAAABAAMAAAABAAAAAAACAAMAAAABAAAAAAADAAMAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAACAAIAAAAFAAIAAAAAAAIAAAAFAAEAAAAAAAIAAAAFAAAAAAAAAAIAAAD9/wAAAAAAAAIAAAD9////AAABAAEAAAAFAP//AAACAAEAAAD9/wIAAAAAAAMAAAAAAAQAAAAAAAMAAAA=")
+tile_set = SubResource("TileSet_cnio0")
+
+[node name="Moss1" type="Sprite2D" parent="Ground" index="4"]
+position = Vector2(1949, 1549)
+rotation = 2.82412
+texture = ExtResource("5_qvsb0")
+
+[node name="Moss2" type="Sprite2D" parent="Ground" index="5"]
+position = Vector2(1201, 1539)
+rotation = 4.01838
+texture = ExtResource("5_qvsb0")
+
+[node name="Moss3" type="Sprite2D" parent="Ground" index="6"]
+position = Vector2(-778, 989)
+rotation = 4.01838
+texture = ExtResource("5_qvsb0")
+
+[node name="Moss5" type="Sprite2D" parent="Ground" index="7"]
+position = Vector2(1908, 345)
+scale = Vector2(1.00441, 1)
+texture = ExtResource("6_xqqjy")
+
+[node name="Moss6" type="Sprite2D" parent="Ground" index="8"]
+position = Vector2(-813, 1155)
+texture = ExtResource("6_xqqjy")
+
+[node name="Moss7" type="Sprite2D" parent="Ground" index="9"]
+position = Vector2(-814, 371)
+rotation = -0.823785
+texture = ExtResource("6_xqqjy")
+
+[node name="Moss12" type="Sprite2D" parent="Ground" index="10"]
+position = Vector2(433, 301)
+rotation = 0.608498
+texture = ExtResource("6_xqqjy")
+
+[node name="House" parent="Ground" index="11" instance=ExtResource("8_x30qc")]
+position = Vector2(92, 3723)
+rotation = -2.40703
+
+[node name="SteamVent" parent="Ground" index="12" instance=ExtResource("9_uaeil")]
+position = Vector2(932, 541)
+
+[node name="Crate" parent="." index="3" groups=["Container"] instance=ExtResource("13_qvsb0")]
+position = Vector2(507, 708)
+rotation = 2.92784
+
+[node name="Item" parent="." index="7" instance=ExtResource("12_wq65m")]
+position = Vector2(296, 412)
+
+[node name="Scout" parent="Enemies" index="0" instance=ExtResource("14_xqqjy")]
+position = Vector2(47, 435)
+
+[node name="Player" parent="." index="9"]
+position = Vector2(1125, 545)
+
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="player_entered" from="Ground/House" to="." method="_on_house_player_entered"]
+[connection signal="player_exited" from="Ground/House" to="." method="_on_house_player_exited"]

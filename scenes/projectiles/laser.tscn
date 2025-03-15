@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3rjsqy400i2u"]
+
+[ext_resource type="Script" uid="uid://dorb20wrd7t8j" path="res://scenes/projectiles/laser.gd" id="1_e6ads"]
+[ext_resource type="Texture2D" uid="uid://b68cdxv15ajvw" path="res://graphics/projectiles/blue.png" id="1_rlgyd"]
+[ext_resource type="Texture2D" uid="uid://ceq06acu20pr2" path="res://graphics/decals/white.png" id="3_cwxws"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6ads"]
+radius = 7.0
+height = 128.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uxcji"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -58, 0)
+direction = Vector3(0, 1, 0)
+spread = 47.687
+flatness = 1.0
+initial_velocity_max = 94.2
+gravity = Vector3(0, 150, 0)
+scale_min = 0.0
+scale_max = 0.4
+color = Color(0.830875, 1, 0.998318, 0.611765)
+
+[node name="Laser" type="Area2D"]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_e6ads")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_e6ads")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 18)
+texture = ExtResource("1_rlgyd")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 20
+texture = ExtResource("3_cwxws")
+process_material = SubResource("ParticleProcessMaterial_uxcji")
+
+[node name="DestroyTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
