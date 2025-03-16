@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3rjsqy400i2u"]
+[gd_scene load_steps=7 format=3 uid="uid://d3rjsqy400i2u"]
 
 [ext_resource type="Script" uid="uid://dorb20wrd7t8j" path="res://scenes/projectiles/laser.gd" id="1_e6ads"]
 [ext_resource type="Texture2D" uid="uid://b68cdxv15ajvw" path="res://graphics/projectiles/blue.png" id="1_rlgyd"]
 [ext_resource type="Texture2D" uid="uid://ceq06acu20pr2" path="res://graphics/decals/white.png" id="3_cwxws"]
+[ext_resource type="AudioStream" uid="uid://bpcgcmuwv8gu" path="res://sound/laser/SFX Laser Shoot 02-421704__bolkmar__sfx-laser-shoot-02.wav" id="4_uxcji"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6ads"]
 radius = 7.0
@@ -41,6 +42,11 @@ process_material = SubResource("ParticleProcessMaterial_uxcji")
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_uxcji")
+autoplay = true
+max_distance = 1000.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]

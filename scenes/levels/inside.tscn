@@ -316,7 +316,6 @@ position = Vector2(-487, -108)
 
 [node name="Player" parent="." index="9"]
 position = Vector2(588, 347)
-rotation = -1.5708
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 

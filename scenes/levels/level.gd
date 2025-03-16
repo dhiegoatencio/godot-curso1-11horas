@@ -7,10 +7,14 @@ var grenade_scene: PackedScene = preload("res://scenes/projectiles/grenade.tscn"
 var item_scene: PackedScene = preload("res://scenes/items/item.tscn")
 
 func _ready() -> void:
+	$Sounds/AudioTheme.finished.connect(_playTheme)
 	for scout: ScoutClass in get_tree().get_nodes_in_group('ScoutGroup'):
 		scout.laser.connect(_on_scout_laser)
 	for container: ItemContainerClass in get_tree().get_nodes_in_group('ContainerGroup'):
 		container.open.connect(_on_container_opened)
+
+func _playTheme():
+	$Sounds/AudioTheme.play()
 
 func _on_scout_laser(pos, direction):
 	_create_laser(pos, direction)

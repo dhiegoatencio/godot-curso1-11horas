@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b33oca8u0eq87"]
+[gd_scene load_steps=6 format=3 uid="uid://b33oca8u0eq87"]
 
 [ext_resource type="Script" uid="uid://b4r1pmjta3f5q" path="res://scenes/levels/level.gd" id="1_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://2rbs1h5pdxwy" path="res://scenes/user interface/ui.tscn" id="3_b2cq8"]
+[ext_resource type="AudioStream" uid="uid://dgqgxnsbggaci" path="res://sound/theme-music.mp3" id="4_urvlt"]
 [ext_resource type="PackedScene" uid="uid://6sn7efihk1aq" path="res://scenes/player/player.tscn" id="4_xb4v1"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="5_urvlt"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_b2cq8")
@@ -20,8 +22,10 @@ metadata/_edit_lock_ = true
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("4_xb4v1")]
+[node name="Player" parent="." node_paths=PackedStringArray("joystick_left", "joystick_right") instance=ExtResource("4_xb4v1")]
 position = Vector2(628, 521)
+joystick_left = NodePath("../CanvasLayer/Joystick left")
+joystick_right = NodePath("../CanvasLayer/Joystick right")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(0.6, 0.6)
@@ -30,6 +34,27 @@ position_smoothing_enabled = true
 [node name="Lights" type="Node2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("3_b2cq8")]
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="AudioTheme" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_urvlt")
+volume_db = -16.0
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Joystick left" parent="CanvasLayer" instance=ExtResource("5_urvlt")]
+
+[node name="Joystick right" parent="CanvasLayer" instance=ExtResource("5_urvlt")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = -300.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
 
 [connection signal="death" from="Player" to="." method="_on_player_death"]
 [connection signal="grenade" from="Player" to="." method="_on_player_grenade"]
